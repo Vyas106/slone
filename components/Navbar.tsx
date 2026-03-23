@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { useAuth } from "@/lib/auth";
+import { usePathname } from "next/navigation";
 
-const Navbar = () => {
+const Navbar = ({ hero = false }) => {
   const [scrolled, setScrolled] = useState(false);
-  const { user, loading } = useAuth();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -14,65 +14,62 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: "Styling Products", href: "/styling-products" },
+    { name: "Hair Tools", href: "/hair-tools" },
+    { name: "Hair Accessories", href: "/hair-accessories" },
+    { name: "Kits", href: "/kits" },
+    { name: "Stores", href: "/stores" },
+    { name: "Hair Stories", href: "/hair-stories" },
+  ];
+
+  const isTransparent = hero && !scrolled;
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-black/60 backdrop-blur-md py-4 border-b border-white/10" : "bg-transparent py-6"
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b ${
+        isTransparent 
+          ? "bg-transparent border-transparent py-8" 
+          : "bg-white/90 backdrop-blur-xl border-black/5 py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
-            <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <span className="text-xl font-black text-white tracking-wider uppercase">Slone</span>
+      <div className="container-standard flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
+           <div className="w-8 h-8 bg-black text-white flex items-center justify-center -rotate-12 group-hover:rotate-0 transition-transform duration-500">
+              <span className="font-black text-lg italic select-none">S</span>
+           </div>
+          <span className="text-2xl font-black tracking-tighter text-black select-none">SLONE</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-4">
-          {!loading && user ? (
-            <>
-              <Link
-                href="/user-dashboard"
-                className="px-6 py-2.5 bg-white/10 border border-white/20 text-white font-bold rounded-xl transition-all duration-300 hover:bg-white/20"
-              >
-                Dashboard
-              </Link>
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-[1.5px] shadow-lg shadow-indigo-500/10 transition-transform hover:scale-105 cursor-pointer">
-                 <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-[11px] font-black uppercase">{user.email?.[0]}</div>
-              </div>
-            </>
-          ) : (
-            <>
-              <Link
-                href="/login"
-                className="px-6 py-2.5 text-zinc-400 font-bold hover:text-white transition-colors uppercase text-xs tracking-widest"
-              >
-                Login
-              </Link>
-              <Link
-                href="/register-user"
-                className="px-6 py-2.5 bg-white/5 border border-white/10 text-white font-bold rounded-xl transition-all duration-300 hover:bg-white/10 hover:border-white/20"
-              >
-                Join as User
-              </Link>
-              <Link
-                href="/register-slone"
-                className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl transition-all duration-300 hover:from-indigo-500 hover:to-purple-500 hover:scale-[1.02] shadow-lg shadow-indigo-600/20"
-              >
-                Join as Slone
-              </Link>
-            </>
-          )}
+        {/* Desktop Nav */}
+        <div className="hidden xl:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`text-[10px] font-black uppercase tracking-[0.25em] transition-all hover:text-accent whitespace-nowrap ${
+                pathname === link.href ? "text-accent" : "text-black/60"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
 
-        {/* Mobile Menu Toggle (Simplified) */}
-        <button className="md:hidden p-2 text-zinc-400">
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-          </svg>
-        </button>
+        <div className="flex items-center gap-8">
+          <Link
+            href="/book-now"
+            className="px-10 py-4 bg-black text-white text-[9px] font-black uppercase tracking-[0.3em] transition-all hover:bg-accent hover:scale-105 shadow-xl shadow-black/10 rounded-full"
+          >
+            Book Now
+          </Link>
+          
+          <button className="xl:hidden p-2 text-black hover:text-accent transition-colors">
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </button>
+        </div>
       </div>
     </nav>
   );
