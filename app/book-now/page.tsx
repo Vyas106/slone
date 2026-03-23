@@ -71,7 +71,7 @@ export default function BookNow() {
                 <span className="text-accent  decoration-foreground/10 underline underline-offset-[1.5rem]">Session.</span>
               </h1>
               <p className="text-muted-foreground font-bold leading-relaxed tracking-normal text-[11px] tracking-normal max-w-sm mb-12 md:mb-20 opacity-80">
-                Sessions at ONE HAIR SLONE are by appointment only. We recommend booking at least two weeks in advance.
+                Sessions at STYLORIA are by appointment only. We recommend booking at least two weeks in advance.
               </p>
 
               <div className="space-y-12">

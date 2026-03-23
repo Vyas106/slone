@@ -14,16 +14,16 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { ArrowRight, Play, Check, Zap, Shield, Sparkles } from "lucide-react";
 
 const products = [
-  { id: 1, name: "AirSense Multi-Styler", category: "Technical Tool", price: "₹49,999", image: "/ui-assets/slone_multistyler_product_1774251709398.png", badge: "Flagship" },
-  { id: 2, name: "TurboDry Precision", category: "Engineered Dry", price: "₹35,999", image: "/ui-assets/slone_hairdryer_product_1774251734895.png", badge: "Best Seller" },
-  { id: 3, name: "Tech-Satin Travel Case", category: "Engineering", price: "₹12,499", image: "/ui-assets/slone_products_grid_1774251180772.png", badge: "New" },
+  { id: 1, name: "AirSense Multi-Styler", category: "Technical Tool", price: "₹49,999", image: "/ui-assets/styloria_multistyler_product_1774251709398.png", badge: "Flagship" },
+  { id: 2, name: "TurboDry Precision", category: "Engineered Dry", price: "₹35,999", image: "/ui-assets/styloria_hairdryer_product_1774251734895.png", badge: "Best Seller" },
+  { id: 3, name: "Tech-Satin Travel Case", category: "Engineering", price: "₹12,499", image: "/ui-assets/styloria_products_grid_1774251180772.png", badge: "New" },
 ];
 
 const categories = [
-  { title: "Technical Smooth", label: "For silk-engineered finishes", img: "/ui-assets/slone_smooth_hair_box_1774251774708.png" },
-  { title: "Sculpted Waves", label: "Architecture for texture", img: "/ui-assets/slone_about_portrait_1774251162203.png" },
-  { title: "Curvature Formula", label: "Bio-defined curl patterns", img: "/ui-assets/slone_stylist_expert_1774251216631.png" },
-  { title: "Master Gear", label: "Artisan-grade hardware", img: "/ui-assets/slone_hero_tool_1774251140173.png" },
+  { title: "Technical Smooth", label: "For silk-engineered finishes", img: "/ui-assets/styloria_smooth_hair_box_1774251774708.png" },
+  { title: "Sculpted Waves", label: "Architecture for texture", img: "/ui-assets/styloria_about_portrait_1774251162203.png" },
+  { title: "Curvature Formula", label: "Bio-defined curl patterns", img: "/ui-assets/styloria_stylist_expert_1774251216631.png" },
+  { title: "Master Gear", label: "Artisan-grade hardware", img: "/ui-assets/styloria_hero_tool_1774251140173.png" },
 ];
 
 export default function Home() {
@@ -58,8 +58,8 @@ export default function Home() {
           <div className="relative order-1 lg:order-2">
             <AspectRatio ratio={1} className="flex items-center justify-center p-12">
                <Image
-                 src="/ui-assets/slone_hero_tool_1774251140173.png"
-                 alt="Slone Hair Tool"
+                 src="/ui-assets/styloria_hero_tool_1774251140173.png"
+                 alt="Styloria Hair Tool"
                  fill
                  className="object-contain scale-125 hover:rotate-6 transition-all duration-[2s] ease-out drop-shadow-[0_50px_50px_rgba(0,0,0,0.15)] drop-shadow-[0_10px_10px_var(--accent)]"
                  priority
@@ -67,7 +67,7 @@ export default function Home() {
             </AspectRatio>
           </div>
         </div>
-        <div className="absolute bottom-12 right-12 text-[12vw] font-medium opacity-[0.03] select-none pointer-events-none  tracking-normal leading-none">SLONE.</div>
+        <div className="absolute bottom-12 right-12 text-[12vw] font-medium opacity-[0.03] select-none pointer-events-none  tracking-normal leading-none">STYLORIA.</div>
       </section>
 
       {/* About Section */}
@@ -78,7 +78,7 @@ export default function Home() {
                <span className="text-accent font-medium text-[10px] tracking-normal tracking-normal  mb-6 block">Artisan Mastery</span>
                <h2 className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-medium tracking-normal tracking-tight leading-none mb-8">Great Hair <br /> Engineered.</h2>
                <CardDescription className="text-base font-bold leading-relaxed text-muted-foreground max-w-md tracking-normal tracking-wide">
-                  At ONE HAIR SLONE, we believe beauty is a technical discipline. Our tools are the bridge between engineering precision and individual expression.
+                  At STYLORIA, we believe beauty is a technical discipline. Our tools are the bridge between engineering precision and individual expression.
                </CardDescription>
             </CardHeader>
             <CardContent className="p-0 flex gap-8">
@@ -93,7 +93,7 @@ export default function Home() {
           
           <div className="relative">
             <AspectRatio ratio={4/5} className="overflow-hidden rounded-[4rem] group shadow-2xl">
-               <Image src="/ui-assets/slone_about_portrait_1774251162203.png" alt="Styling" fill className="object-cover group-hover:scale-110 transition-transform duration-[3s]" />
+               <Image src="/ui-assets/styloria_about_portrait_1774251162203.png" alt="Styling" fill className="object-cover group-hover:scale-110 transition-transform duration-[3s]" />
                <div className="absolute inset-x-8 bottom-8 p-10 bg-background/20 backdrop-blur-3xl border border-white/20 rounded-3xl">
                   <span className="text-white text-[10px] font-medium tracking-normal tracking-normal mb-2 block opacity-60">Session.001</span>
                   <p className="text-white text-2xl font-medium tracking-normal tracking-tight">Technical Mastery of Texture.</p>
@@ -198,7 +198,7 @@ export default function Home() {
           </div>
           <div className="lg:col-span-3 relative">
             <AspectRatio ratio={4/3} className="bg-muted-foreground/10 rounded-[5rem] overflow-hidden p-20 flex items-center justify-center border border-white/5 backdrop-blur-3xl group shadow-[0_0_100px_rgba(0,0,0,0.5)]">
-               <Image src="/ui-assets/slone_hairset_kit_1774251754031.png" alt="Kits" fill className="object-contain p-20 scale-125 group-hover:scale-150 transition-all duration-[3s] ease-out drop-shadow-[0_50px_50px_rgba(0,0,0,0.4)]" />
+               <Image src="/ui-assets/styloria_hairset_kit_1774251754031.png" alt="Kits" fill className="object-contain p-20 scale-125 group-hover:scale-150 transition-all duration-[3s] ease-out drop-shadow-[0_50px_50px_rgba(0,0,0,0.4)]" />
             </AspectRatio>
           </div>
         </div>
@@ -209,7 +209,7 @@ export default function Home() {
         <div className="container-standard">
           <div className="text-center mb-16 md:mb-24 max-w-4xl mx-auto">
              <span className="text-accent text-[11px] font-medium tracking-normal tracking-normal mb-8 block ">社區 network</span>
-             <h2 className="text-4xl md:text-5xl lg:text-[8rem] font-medium tracking-normal tracking-tight  leading-none mb-12">One Hair Community.</h2>
+             <h2 className="text-4xl md:text-5xl lg:text-[8rem] font-medium tracking-normal tracking-tight  leading-none mb-12">Styloria Community.</h2>
              <p className="text-muted-foreground text-[11px] font-medium tracking-normal tracking-normal opacity-40">Witness the evolution of community-led technical transformations.</p>
           </div>
           
@@ -218,7 +218,7 @@ export default function Home() {
                {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                  <CarouselItem key={i} className="basis-1/3 md:basis-1/4 lg:basis-1/6 flex flex-col items-center gap-8">
                    <Avatar className="w-32 h-32 border-4 border-muted hover:border-accent transition-all cursor-pointer shadow-xl">
-                     <AvatarImage src={`/ui-assets/slone_stylist_expert_1774251216631.png`} />
+                     <AvatarImage src={`/ui-assets/styloria_stylist_expert_1774251216631.png`} />
                      <AvatarFallback>U{i}</AvatarFallback>
                    </Avatar>
                    <span className="text-[10px] font-medium tracking-normal tracking-normal opacity-30 ">Network.ID_{i}</span>
@@ -232,7 +232,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
             {[1, 2, 3, 4, 5].map((i) => (
                <Card key={i} className="group relative aspect-[3/4] overflow-hidden rounded-[3rem] border-none shadow-2xl hover:scale-[1.02] transition-all duration-500">
-                 <Image src={`/ui-assets/slone_about_portrait_1774251162203.png`} alt="Style" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2s]" />
+                 <Image src={`/ui-assets/styloria_about_portrait_1774251162203.png`} alt="Style" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2s]" />
                  <div className="absolute inset-x-6 bottom-6 p-6 bg-background/20 backdrop-blur-2xl border border-white/10 rounded-3xl opacity-0 group-hover:opacity-100 translate-y-8 group-hover:translate-y-0 transition-all duration-700">
                     <p className="text-white text-[10px] font-medium tracking-normal tracking-normal mb-4">Geometric Smooth</p>
                     <Button variant="premium" className="w-full h-10 rounded-xl text-[9px] font-medium tracking-normal tracking-normal">View Routine</Button>
@@ -249,10 +249,10 @@ export default function Home() {
         <div className="container-standard grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-40 items-center">
           <div className="lg:col-span-3">
              <AspectRatio ratio={16/10} className="relative overflow-hidden rounded-[4rem] group border border-white/5 shadow-2xl">
-                <Image src="/ui-assets/slone_salon_interior_1774251198985.png" alt="Salon" fill className="object-cover group-hover:scale-110 transition-transform duration-[4s]" />
+                <Image src="/ui-assets/styloria_salon_interior_1774251198985.png" alt="Salon" fill className="object-cover group-hover:scale-110 transition-transform duration-[4s]" />
                 <div className="absolute top-12 left-12 p-12 bg-background/10 backdrop-blur-3xl border border-white/10 rounded-[3rem] shadow-2xl">
                   <span className="block text-accent text-[11px] font-medium tracking-normal tracking-normal mb-4 ">Sanctuary</span>
-                  <p className="text-4xl md:text-5xl font-medium tracking-normal tracking-tight">One Hair Flagship.</p>
+                   <p className="text-4xl md:text-5xl font-medium tracking-normal tracking-tight">Styloria Flagship.</p>
                 </div>
              </AspectRatio>
           </div>

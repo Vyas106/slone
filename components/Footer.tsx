@@ -13,7 +13,7 @@ const Footer = () => {
                <div className="w-8 h-8 bg-foreground text-background flex items-center justify-center -rotate-12 group-hover:rotate-0 transition-transform duration-500 rounded-sm">
                   <span className="font-medium text-lg  tracking-tight">S</span>
                </div>
-              <span className="text-xl font-medium tracking-tight tracking-normal whitespace-nowrap">ONE HAIR SLONE.</span>
+              <span className="text-xl font-medium tracking-tight tracking-normal whitespace-nowrap">STYLORIA.</span>
             </Link>
             <p className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground leading-relaxed max-w-[200px]">
               Redefining precision styling through elite engineering and artisan craftsmanship.
@@ -63,7 +63,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-8">
           <p className="text-[9px] font-medium tracking-normal tracking-normal text-muted-foreground">
-            &copy; {new Date().getFullYear()} ONE HAIR SLONE. All rights reserved.
+            &copy; {new Date().getFullYear()} STYLORIA. All rights reserved.
           </p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
             <span className="text-[9px] font-medium tracking-normal tracking-normal  text-accent">Series.01 / Revision.04</span>

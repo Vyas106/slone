@@ -57,7 +57,7 @@ const Navbar = ({ hero = false }) => {
           <div className="w-8 h-8 bg-foreground text-background flex items-center justify-center -rotate-12 group-hover:rotate-0 transition-transform duration-500 rounded-sm">
             <span className="font-medium text-lg  select-none">S</span>
           </div>
-          <span className="text-lg sm:text-xl md:text-2xl font-medium tracking-tight text-foreground select-none">ONE HAIR SLONE.</span>
+          <span className="text-lg sm:text-xl md:text-2xl font-medium tracking-tight text-foreground select-none">STYLORIA.</span>
         </Link>
 
         {/* Desktop Nav */}

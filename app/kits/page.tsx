@@ -11,7 +11,7 @@ export default function Kits() {
   return (
     <ContentPage 
       title="Kits" 
-      description="Curated collections designed for specific hair needs. The perfect introduction to the Slone ecosystem." 
+      description="Curated collections designed for specific hair needs. The perfect introduction to the Styloria ecosystem." 
       items={items}
     />
   );

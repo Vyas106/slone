@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SLONE | Precision Hair Tools & Styling",
+  title: "STYLORIA | Precision Hair Tools & Styling",
   description: "Redefining the relationship between technology and beauty with salon-grade hair tools and styling products.",
 };
 
