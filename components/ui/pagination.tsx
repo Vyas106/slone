@@ -52,7 +52,7 @@ function PaginationLink({
       nativeButton={false}
       render={
         <a
-          aria-current={isActive ? "page" : undefined} nativeButton={false}
+          aria-current={isActive ? "page" : undefined}
           data-slot="pagination-link"
           data-active={isActive}
           {...props}

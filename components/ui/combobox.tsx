@@ -63,7 +63,7 @@ function ComboboxInput({
   return (
     <InputGroup className={cn("w-auto", className)}>
       <ComboboxPrimitive.Input
-        render={<InputGroupInput disabled={disabled} nativeButton={false} />}
+        render={<InputGroupInput disabled={disabled} />}
         {...props}
       />
       <InputGroupAddon align="inline-end">
@@ -149,7 +149,7 @@ function ComboboxItem({
       <ComboboxPrimitive.ItemIndicator
         render={
           <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />
-        } nativeButton={false}
+        }
       >
         <CheckIcon className="pointer-events-none" />
       </ComboboxPrimitive.ItemIndicator>
