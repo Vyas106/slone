@@ -68,7 +68,7 @@ function SheetContent({
                 className="absolute top-3 right-3"
                 size="icon-sm"
               />
-            } nativeButton={false}
+            } nativeButton={true}
           >
             <XIcon
             />

@@ -28,7 +28,7 @@ const categories = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-white">
+    <div className="min-h-screen bg-background text-foreground selection:bg-purple-500 selection:text-white">
       <Navbar hero />
 
       {/* Hero Section */}
@@ -39,17 +39,17 @@ export default function Home() {
              <Badge variant="outline" className="mb-6 px-4 py-1.5 border-accent text-accent font-medium tracking-normal tracking-normal  rounded-full">
                 Series.01 / Evolution
              </Badge>
-            <h1 className="text-6xl md:text-[5.5rem] xl:text-[8rem] font-medium tracking-normal tracking-tight mb-8 leading-[0.8] animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <h1 className="text-5xl md:text-[5.5rem] xl:text-[8rem] font-medium tracking-normal tracking-tight mb-8 leading-[0.8] animate-in fade-in slide-in-from-bottom-8 duration-700">
               Air Sense <br /> <span className="text-accent ">Engineering.</span>
             </h1>
             <p className="text-muted-foreground text-[11px] md:text-sm font-bold max-w-sm mb-12 tracking-normal leading-relaxed tracking-normal opacity-80">
               Redefining precision styling with zero-heat-damage architecture. Built for the modern artisan.
             </p>
-            <div className="flex flex-wrap gap-4">
-               <Button size="lg" className="rounded-full px-12 py-8 text-[11px] font-medium tracking-normal tracking-normal shadow-2xl" render={<Link href="/hair-tools" />} nativeButton={false}>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+               <Button size="lg" className="w-full sm:w-auto rounded-full px-12 py-8 text-[11px] font-medium tracking-normal tracking-normal shadow-2xl" render={<Link href="/hair-tools" />} nativeButton={false}>
                   Explore Technology
                </Button>
-               <Button variant="outline" size="lg" className="rounded-full px-12 py-8 text-[11px] font-medium tracking-normal tracking-normal border-2 group">
+               <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-12 py-8 text-[11px] font-medium tracking-normal tracking-normal border-2 group">
                   <Play className="fill-current mr-3 size-4 -translate-y-0.5" />
                   Technical Film
                </Button>
@@ -72,11 +72,11 @@ export default function Home() {
 
       {/* About Section */}
       <section className="section-padding overflow-hidden">
-        <div className="container-standard grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-40 items-center">
+        <div className="container-standard grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 lg:gap-40 items-center">
           <Card className="border-none shadow-none bg-transparent">
             <CardHeader className="p-0 mb-12">
                <span className="text-accent font-medium text-[10px] tracking-normal tracking-normal  mb-6 block">Artisan Mastery</span>
-               <h2 className="text-5xl lg:text-7xl xl:text-8xl font-medium tracking-normal tracking-tight leading-none mb-8">Great Hair <br /> Engineered.</h2>
+               <h2 className="text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-medium tracking-normal tracking-tight leading-none mb-8">Great Hair <br /> Engineered.</h2>
                <CardDescription className="text-base font-bold leading-relaxed text-muted-foreground max-w-md tracking-normal tracking-wide">
                   At ONE HAIR SLONE, we believe beauty is a technical discipline. Our tools are the bridge between engineering precision and individual expression.
                </CardDescription>
@@ -106,9 +106,9 @@ export default function Home() {
       {/* Grid Collections */}
       <section className="section-padding bg-muted/40">
         <div className="container-standard">
-           <div className="flex justify-between items-end mb-20">
-              <h2 className="text-4xl lg:text-6xl font-medium tracking-normal tracking-tight ">Collections.</h2>
-              <Button variant="premium" size="sm" className="rounded-full px-8 text-[9px] font-medium tracking-normal tracking-normal" render={<Link href="/hair-tools" />} nativeButton={false}>View All</Button>
+           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-20">
+              <h2 className="text-3xl md:text-4xl lg:text-6xl font-medium tracking-normal tracking-tight ">Collections.</h2>
+              <Button variant="premium" size="sm" className="w-full md:w-auto rounded-full px-8 text-[9px] font-medium tracking-normal tracking-normal" render={<Link href="/hair-tools" />} nativeButton={false}>View All</Button>
            </div>
            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
              {categories.map((cat, i) => (
@@ -129,10 +129,10 @@ export default function Home() {
       {/* Spotlight Carousel */}
       <section className="section-padding bg-background">
         <div className="container-standard">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-24">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-16 md:mb-24">
             <div>
               <span className="text-accent text-[11px] font-medium tracking-normal tracking-normal mb-6 block ">Hardware spotlight</span>
-              <h2 className="text-6xl lg:text-[7rem] font-medium tracking-normal tracking-tight  leading-none">Engineering.</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-[7rem] font-medium tracking-normal tracking-tight  leading-none">Engineering.</h2>
             </div>
             <div className="flex gap-4">
                {/* Controls integrated into UI if needed, or use carousel buttons */}
@@ -171,10 +171,10 @@ export default function Home() {
       {/* Feature Kits */}
       <section className="section-padding bg-foreground text-background relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-full h-[500px] bg-accent/20 blur-[150px] -translate-y-1/2 opacity-20" />
-        <div className="container-standard grid grid-cols-1 lg:grid-cols-5 items-center gap-24 lg:gap-40">
+        <div className="container-standard grid grid-cols-1 lg:grid-cols-5 items-center gap-16 md:gap-24 lg:gap-40">
           <div className="lg:col-span-2 relative z-10">
             <span className="text-accent text-xs font-medium tracking-normal mb-8 block tracking-normal ">System Bundles</span>
-            <h2 className="text-6xl lg:text-[6.5rem] font-medium tracking-normal tracking-tight mb-10 leading-[0.85]">Technical <br /> Solutions.</h2>
+            <h2 className="text-5xl md:text-6xl lg:text-[6.5rem] font-medium tracking-normal tracking-tight mb-10 leading-[0.85]">Technical <br /> Solutions.</h2>
             <p className="text-lg text-background/40 font-bold mb-14 max-w-sm tracking-normal leading-relaxed tracking-wider -none">
                Curated technical sequences designed for specific architectural outcomes. Engineering for beauty.
             </p>
@@ -207,9 +207,9 @@ export default function Home() {
       {/* Community / Stories */}
       <section className="section-padding bg-background">
         <div className="container-standard">
-          <div className="text-center mb-24 max-w-4xl mx-auto">
+          <div className="text-center mb-16 md:mb-24 max-w-4xl mx-auto">
              <span className="text-accent text-[11px] font-medium tracking-normal tracking-normal mb-8 block ">社區 network</span>
-             <h2 className="text-6xl lg:text-[8rem] font-medium tracking-normal tracking-tight  leading-none mb-12">One Hair Community.</h2>
+             <h2 className="text-4xl md:text-5xl lg:text-[8rem] font-medium tracking-normal tracking-tight  leading-none mb-12">One Hair Community.</h2>
              <p className="text-muted-foreground text-[11px] font-medium tracking-normal tracking-normal opacity-40">Witness the evolution of community-led technical transformations.</p>
           </div>
           
@@ -229,7 +229,7 @@ export default function Home() {
              <CarouselNext className="hidden md:flex -right-12 bg-foreground text-background" />
           </Carousel>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
             {[1, 2, 3, 4, 5].map((i) => (
                <Card key={i} className="group relative aspect-[3/4] overflow-hidden rounded-[3rem] border-none shadow-2xl hover:scale-[1.02] transition-all duration-500">
                  <Image src={`/ui-assets/slone_about_portrait_1774251162203.png`} alt="Style" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2s]" />
@@ -257,16 +257,16 @@ export default function Home() {
              </AspectRatio>
           </div>
           <div className="lg:col-span-2 relative z-10">
-            <h2 className="text-7xl lg:text-[8rem] xl:text-[9rem] font-medium tracking-normal tracking-tight mb-12 leading-[0.8] -none">Spaces.</h2>
+            <h2 className="text-5xl md:text-6xl lg:text-[8rem] xl:text-[9rem] font-medium tracking-normal tracking-tight mb-12 leading-[0.8] -none">Spaces.</h2>
             <p className="text-lg font-bold leading-relaxed text-background/40 mb-16 max-w-sm tracking-normal tracking-normal ">
                Physical laboratories designed for precision. Experience technical mastery, firsthand.
             </p>
             <div className="flex flex-col gap-6">
               {["BANDRA, MUMBAI", "DEFENCE COLONY, DELHI", "KORAMANGALA, BLR"].map((loc) => (
-                <Button key={loc} variant="outline" className="h-24 hover:bg-accent border-white/10 justify-between px-10 rounded-[2.5rem] group" render={<Link href="/book-now" />} nativeButton={false}>
-                   <span className="text-lg font-medium tracking-normal tracking-normal">{loc}</span>
-                   <ArrowRight className="size-8 -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all font-medium" />
-                </Button>
+                <Link key={loc} href="/book-now" className="flex items-center justify-between h-24 px-10 rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/15 hover:border-white/30 transition-all duration-500 group cursor-pointer">
+                   <span className="text-lg font-medium tracking-wide text-white/90 group-hover:text-white transition-colors">{loc}</span>
+                   <ArrowRight className="size-6 text-white/40 -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-hover:text-white transition-all duration-500" />
+                </Link>
               ))}
             </div>
           </div>
@@ -280,19 +280,19 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-40">
             <div className="flex flex-col justify-between">
               <div>
-                <h2 className="text-6xl lg:text-7xl xl:text-[8rem] font-medium tracking-normal tracking-tight mb-12  leading-[0.8]">Network.</h2>
-                <p className="text-sm font-bold tracking-normal tracking-normal text-muted-foreground mb-20 max-w-sm  opacity-60">Join the technical distribution network for exclusive artisan drops.</p>
-                <form className="max-w-xl flex gap-x-2 p-2 bg-muted/50 border border-border rounded-full focus-within:border-accent group transition-all items-center shadow-inner">
+                <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-[8rem] font-medium tracking-normal tracking-tight mb-12  leading-[0.8]">Network.</h2>
+                <p className="text-sm font-bold tracking-normal tracking-normal text-muted-foreground mb-12 md:mb-20 max-w-sm  opacity-60">Join the technical distribution network for exclusive artisan drops.</p>
+                <form className="max-w-xl flex flex-col sm:flex-row gap-y-4 gap-x-2 p-2 bg-muted/50 border border-border rounded-2xl md:rounded-full focus-within:border-accent group transition-all items-center shadow-inner">
                   <Input
                     type="email"
                     placeholder="YOUR@IDENTITY.COM"
-                    className="flex-1 bg-transparent border-none px-8 h-14 text-[11px] font-medium tracking-normal tracking-normal outline-none shadow-none focus-visible:ring-0"
+                    className="flex-1 w-full bg-transparent border-none px-4 sm:px-8 h-12 md:h-14 text-[11px] font-medium tracking-normal tracking-normal outline-none shadow-none focus-visible:ring-0"
                   />
-                  <Button className="rounded-full h-14 px-12 text-[10px] font-medium tracking-normal tracking-normal">Register</Button>
+                  <Button className="w-full sm:w-auto rounded-xl md:rounded-full h-12 md:h-14 px-8 md:px-12 text-[10px] font-medium tracking-normal tracking-normal">Register</Button>
                 </form>
               </div>
 
-              <div className="pt-24 mt-24 border-t border-border flex gap-24">
+              <div className="pt-16 md:pt-24 mt-16 md:mt-24 border-t border-border flex gap-12 md:gap-24">
                 <div className="flex flex-col gap-4">
                   <span className="text-6xl font-medium  tracking-tight leading-none">14k+</span>
                   <span className="text-[11px] font-medium tracking-normal tracking-normal text-muted-foreground opacity-40 ">Global Artisans</span>
@@ -304,8 +304,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="space-y-16">
-              <div className="grid grid-cols-2 gap-8">
+            <div className="space-y-12 md:space-y-16">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                 {[
                   { label: "FREE SHIPPING", icon: Zap },
                   { label: "30-DAY TRIALS", icon: Shield },
@@ -321,12 +321,12 @@ export default function Home() {
                 ))}
               </div>
 
-              <Card className="p-12 border-2 border-accent/20 rounded-[3.5rem] flex flex-col md:flex-row items-center justify-between gap-12 bg-accent/5 backdrop-blur-3xl shadow-[0_0_50px_rgba(var(--accent),0.1)]">
+              <Card className="p-8 md:p-12 border-2 border-accent/20 rounded-[2.5rem] md:rounded-[3.5rem] flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 bg-accent/5 backdrop-blur-3xl shadow-[0_0_50px_rgba(var(--accent),0.1)] text-center md:text-left">
                 <div className="space-y-3">
                    <Badge className="bg-accent text-[9px] font-medium tracking-normal tracking-normal py-1 px-4 ">Countdown</Badge>
                    <span className="text-[11px] font-medium tracking-normal tracking-normal text-accent  block">Mechanical drop in</span>
                 </div>
-                <div className="flex gap-10 text-5xl lg:text-6xl font-medium  tracking-tight">
+                <div className="flex gap-6 sm:gap-10 text-4xl sm:text-5xl lg:text-6xl font-medium  tracking-tight">
                   <div className="flex flex-col items-center"><span>12</span><span className="text-[10px] -none opacity-30 tracking-normal tracking-normal mt-3">Hrs</span></div>
                   <span className="opacity-20 translate-y-2">:</span>
                   <div className="flex flex-col items-center"><span>45</span><span className="text-[10px] -none opacity-30 tracking-normal tracking-normal mt-3">Min</span></div>

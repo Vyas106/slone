@@ -58,19 +58,19 @@ export default function BookNow() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-white">
+    <div className="min-h-screen bg-background text-foreground selection:bg-purple-500 selection:text-white">
       <Navbar />
       
       <main className="pt-40 lg:pt-56">
         <div className="container-standard">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-56">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start mb-32 md:mb-56">
             <div className="lg:sticky lg:top-40">
               <span className="text-accent font-medium text-[10px] tracking-normal tracking-normal mb-8 block ">Reservation / Registry</span>
-              <h1 className="text-6xl md:text-[5rem] xl:text-[7rem] font-medium tracking-normal tracking-tight leading-[0.85] mb-12">
+              <h1 className="text-5xl md:text-[5rem] xl:text-[7rem] font-medium tracking-normal tracking-tight leading-[0.85] mb-12">
                 Book Your <br />
                 <span className="text-accent  decoration-foreground/10 underline underline-offset-[1.5rem]">Session.</span>
               </h1>
-              <p className="text-muted-foreground font-bold leading-relaxed tracking-normal text-[11px] tracking-normal max-w-sm mb-20 opacity-80">
+              <p className="text-muted-foreground font-bold leading-relaxed tracking-normal text-[11px] tracking-normal max-w-sm mb-12 md:mb-20 opacity-80">
                 Sessions at ONE HAIR SLONE are by appointment only. We recommend booking at least two weeks in advance.
               </p>
 
@@ -111,8 +111,8 @@ export default function BookNow() {
                   </Button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-12">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <form onSubmit={handleSubmit} className="space-y-8 md:space-y-12">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                     <div className="space-y-4">
                       <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Full Identity</Label>
                       <Input 
@@ -136,10 +136,10 @@ export default function BookNow() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                     <div className="space-y-4">
                       <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Discipline</Label>
-                      <Select defaultValue={formData.service} onValueChange={(v) => setFormData({...formData, service: v})}>
+                      <Select defaultValue={formData.service} onValueChange={(v) => { if (v != null) setFormData(prev => ({...prev, service: v})); }}>
                          <SelectTrigger className="bg-background border-none h-14 rounded-2xl px-6 text-[11px] font-medium tracking-normal tracking-normal focus:ring-2 focus:ring-accent">
                             <SelectValue placeholder="SERVICE" />
                          </SelectTrigger>
@@ -150,7 +150,7 @@ export default function BookNow() {
                     </div>
                     <div className="space-y-4">
                       <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Sector</Label>
-                      <Select defaultValue={formData.location} onValueChange={(v) => setFormData({...formData, location: v})}>
+                      <Select defaultValue={formData.location} onValueChange={(v) => { if (v != null) setFormData(prev => ({...prev, location: v})); }}>
                          <SelectTrigger className="bg-background border-none h-14 rounded-2xl px-6 text-[11px] font-medium tracking-normal tracking-normal focus:ring-2 focus:ring-accent">
                             <SelectValue placeholder="LOCATION" />
                          </SelectTrigger>
@@ -161,7 +161,7 @@ export default function BookNow() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                     <div className="space-y-4">
                       <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Chronology / Date</Label>
                       <Input 

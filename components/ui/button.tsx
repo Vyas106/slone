@@ -53,6 +53,7 @@ function Button({
   return (
     <ButtonPrimitive
       data-slot="button"
+      suppressHydrationWarning
       className={cn(buttonVariants({ variant, size, className }))}
       nativeButton={nativeButton !== undefined ? nativeButton : (props.render ? false : undefined)}
       {...props}

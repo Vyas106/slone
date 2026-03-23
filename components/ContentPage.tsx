@@ -8,25 +8,25 @@ import { MoveDown } from "lucide-react";
 
 export default function ContentPage({ title, description, items }: { title: string, description: string, items: any[] }) {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-white">
+    <div className="min-h-screen bg-background text-foreground selection:bg-purple-500 selection:text-white">
       <Navbar />
       
       <main className="pt-40 lg:pt-56">
         <div className="container-standard">
-          <header className="mb-40">
+          <header className="mb-20 md:mb-40">
              <div className="flex flex-col lg:flex-row justify-between items-start gap-16 lg:gap-32">
                 <div className="flex-1">
                    <div className="flex items-center gap-6 mb-10">
                       <div className="w-16 h-[2px] bg-accent" />
                       <Badge variant="outline" className="border-accent text-accent font-medium text-[10px] tracking-normal tracking-normal  px-4 py-1.5 rounded-full">Series.01 / Collection</Badge>
                    </div>
-                   <h1 className="text-5xl md:text-8xl lg:text-9xl font-medium tracking-normal tracking-tight leading-[0.8] max-w-5xl">
+                   <h1 className="text-4xl md:text-8xl lg:text-9xl font-medium tracking-normal tracking-tight leading-[0.8] max-w-5xl">
                       {title} <br />
                       <span className="text-accent  decoration-foreground/10 underline underline-offset-[1.5rem]">Archive.</span>
                    </h1>
                 </div>
                 <div className="lg:max-w-md lg:pt-20">
-                   <p className="text-muted-foreground font-bold leading-relaxed tracking-normal text-[11px] md:text-[13px] tracking-normal opacity-80 mb-16">
+                   <p className="text-muted-foreground font-bold leading-relaxed tracking-normal text-[11px] md:text-[13px] tracking-normal opacity-80 mb-10 md:mb-16">
                       {description}
                    </p>
                    <Button variant="outline" className="group rounded-full h-16 px-10 text-[11px] font-medium tracking-normal tracking-normal border-2">
@@ -37,7 +37,7 @@ export default function ContentPage({ title, description, items }: { title: stri
              </div>
           </header>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 gap-y-32 mb-56">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 md:gap-x-12 gap-y-16 md:gap-y-32 mb-32 md:mb-56">
               {items.map((item, idx) => (
                   <div key={idx} className="group cursor-pointer">
                       <div className="relative mb-10">
