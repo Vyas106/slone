@@ -1,38 +1,76 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
   return (
-    <footer className="py-24 lg:py-40 bg-white border-t border-black/5">
-      <div className="container-standard">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-20 mb-32">
-          <div className="lg:col-span-2">
-            <Link href="/" className="text-4xl font-black italic tracking-tighter mb-10 block">SLONE</Link>
-            <p className="text-[10px] font-bold text-black/30 leading-relaxed max-w-xs uppercase tracking-[0.2em] mb-12">REDEFINING THE RELATIONSHIP BETWEEN TECHNOLOGY AND BEAUTY.</p>
-            <div className="flex gap-4">
-              {["ig", "fb", "yt", "tw", "li"].map((s) => (
-                <button key={s} className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center text-[11px] font-black uppercase tracking-tighter hover:bg-black hover:text-white hover:border-black transition-all shadow-sm">{s}</button>
+    <footer className="bg-background text-foreground border-t border-border mt-auto">
+      <div className="container-standard py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex items-center gap-3 mb-8 group">
+               <div className="w-8 h-8 bg-foreground text-background flex items-center justify-center -rotate-12 group-hover:rotate-0 transition-transform duration-500 rounded-sm">
+                  <span className="font-medium text-lg  tracking-tight">S</span>
+               </div>
+              <span className="text-xl font-medium tracking-tight tracking-normal whitespace-nowrap">ONE HAIR SLONE.</span>
+            </Link>
+            <p className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground leading-relaxed max-w-[200px]">
+              Redefining precision styling through elite engineering and artisan craftsmanship.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            <span className="text-[10px] font-medium tracking-normal tracking-normal text-accent ">Exploration</span>
+            <div className="flex flex-col gap-4">
+              {["Styling Products", "Hair Tools", "Kits", "Stores", "Hair Stories"].map(item => (
+                <Link key={item} href={`/${item.toLowerCase().replace(" ", "-")}`} className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground hover:text-accent transition-colors">
+                  {item}
+                </Link>
               ))}
             </div>
           </div>
-          {[
-            { t: "SHOP", links: ["ALL PRODUCTS", "STYLING TOOLS", "ACCESSORIES", "GIFT CARDS"] },
-            { t: "SUPPORT", links: ["HELP CENTER", "SHIPPING", "RETURNS", "CONTACT"] },
-            { t: "EDUCATION", links: ["TUTORIALS", "PRO PROGRAM", "STUDIOS", "CAREERS"] },
-            { t: "LEGAL", links: ["PRIVACY", "TERMS", "COOKIES", "ACCESSIBILITY"] }
-          ].map((col) => (
-            <div key={col.t}>
-              <h4 className="text-[11px] font-black uppercase tracking-[0.3em] mb-10 text-accent">{col.t}</h4>
-              <ul className="flex flex-col gap-5 text-[10px] font-black uppercase tracking-widest text-black/40">
-                {col.links.map(l => <li key={l} className="hover:text-black cursor-pointer transition-colors px-1">{l}</li>)}
-              </ul>
+
+          <div className="flex flex-col gap-6">
+            <span className="text-[10px] font-medium tracking-normal tracking-normal text-accent ">Support</span>
+            <div className="flex flex-col gap-4">
+              {["Shipping", "Returns", "Terms", "Privacy", "Contact"].map(item => (
+                <Link key={item} href="#" className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground hover:text-accent transition-colors">
+                  {item}
+                </Link>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="flex flex-col gap-8">
+            <span className="text-[10px] font-medium tracking-normal tracking-normal text-accent ">Journal</span>
+            <div className="space-y-4">
+              <p className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground opacity-60">Join the technical network.</p>
+              <div className="flex gap-2">
+                <Input placeholder="EMAIL" className="bg-muted border-none rounded-sm h-10 text-[10px] font-medium tracking-normal px-4 focus-visible:ring-1 focus-visible:ring-accent" />
+                <Button size="icon" className="h-10 w-10 bg-foreground text-background rounded-sm hover:bg-accent hover:text-white transition-all">→</Button>
+              </div>
+            </div>
+            <div className="flex gap-6 mt-4 opacity-30">
+              {["IG", "TW", "FB", "YT"].map(social => (
+                <span key={social} className="text-[10px] font-medium tracking-normal cursor-pointer hover:text-accent transition-colors">{social}</span>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center py-16 border-t border-black/5 gap-10">
-          <p className="text-[9px] font-black uppercase tracking-[0.3em] opacity-30">© 2024 SLONE INTERNATIONAL GROUP. ENGINEERED WITH PRECISION.</p>
-          <div className="flex gap-12 text-[9px] font-black uppercase tracking-[0.3em] opacity-30">
-            <Link href="#" className="hover:opacity-100 transition-opacity">Global Presence</Link>
-            <Link href="#" className="hover:opacity-100 transition-opacity">Sustainability Report</Link>
+
+        <Separator className="bg-border opacity-50 mb-12" />
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-[9px] font-medium tracking-normal tracking-normal text-muted-foreground">
+            &copy; {new Date().getFullYear()} ONE HAIR SLONE. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <span className="text-[9px] font-medium tracking-normal tracking-normal  text-accent">Series.01 / Revision.04</span>
+            <div className="flex items-center gap-2">
+               <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+               <span className="text-[9px] font-medium tracking-normal tracking-normal text-muted-foreground whitespace-nowrap">Operational status: GLOBAL</span>
+            </div>
           </div>
         </div>
       </div>

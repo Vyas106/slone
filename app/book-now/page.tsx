@@ -5,13 +5,20 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { CheckCircle2, Clock, MapPin, Sparkles } from "lucide-react";
 
 export default function BookNow() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     service: "Signature Cut",
-    location: "Downtown Arts District",
+    location: "Bandra West, Mumbai",
     date: "",
     time: "",
     message: ""
@@ -27,10 +34,10 @@ export default function BookNow() {
   ];
 
   const locations = [
-    "Downtown Arts District",
-    "SoHo New York",
-    "West London Studio",
-    "The Lab (East Side)"
+    "Bandra West, Mumbai",
+    "Defence Colony, Delhi",
+    "Koramangala Studio",
+    "The Lab (Jubilee Hills)"
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,7 +50,7 @@ export default function BookNow() {
         status: "pending"
       });
       setStatus("success");
-      setFormData({ name: "", email: "", service: "Signature Cut", location: "Downtown Arts District", date: "", time: "", message: "" });
+      setFormData({ name: "", email: "", service: "Signature Cut", location: "Bandra West, Mumbai", date: "", time: "", message: "" });
     } catch (error) {
       console.error("Error booking appointment:", error);
       setStatus("error");
@@ -51,149 +58,157 @@ export default function BookNow() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-white">
       <Navbar />
       
       <main className="pt-40 lg:pt-56">
         <div className="container-standard">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-40">
-            <div>
-              <span className="text-accent font-black text-[10px] tracking-[0.5em] uppercase mb-8 block italic">Reservation / Series.01</span>
-              <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start mb-56">
+            <div className="lg:sticky lg:top-40">
+              <span className="text-accent font-medium text-[10px] tracking-normal tracking-normal mb-8 block ">Reservation / Registry</span>
+              <h1 className="text-6xl md:text-[5rem] xl:text-[7rem] font-medium tracking-normal tracking-tight leading-[0.85] mb-12">
                 Book Your <br />
-                <span className="text-black/5 italic decoration-accent underline underline-offset-8">Session.</span>
+                <span className="text-accent  decoration-foreground/10 underline underline-offset-[1.5rem]">Session.</span>
               </h1>
-              <p className="text-black/40 font-bold leading-relaxed uppercase text-[11px] tracking-[0.2em] max-w-sm mb-20">
-                Sessions at Slone are by appointment only. We recommend booking at least two weeks in advance to secure your preferred artisan.
+              <p className="text-muted-foreground font-bold leading-relaxed tracking-normal text-[11px] tracking-normal max-w-sm mb-20 opacity-80">
+                Sessions at ONE HAIR SLONE are by appointment only. We recommend booking at least two weeks in advance.
               </p>
 
-              <div className="space-y-16">
-                 <div className="border-l-2 border-black/5 pl-8">
-                    <span className="block text-[10px] font-black uppercase tracking-widest text-black/20 mb-3 italic">Studio Hours</span>
-                    <p className="text-sm font-black uppercase tracking-widest">Tue — Sat / 10:00 — 19:00</p>
-                 </div>
-                 <div className="border-l-2 border-black/5 pl-8">
-                    <span className="block text-[10px] font-black uppercase tracking-widest text-black/20 mb-3 italic">Location</span>
-                    <p className="text-sm font-black uppercase tracking-widest">Downtown Arts District, Unit 04</p>
-                 </div>
+              <div className="space-y-12">
+                 {[
+                    { icon: Clock, label: "Studio Hours", text: "Tue — Sat / 10:00 — 19:00" },
+                    { icon: MapPin, label: "Location", text: "Bandra West, Mumbai, Unit 04" },
+                    { icon: Sparkles, label: "Artisans", text: "Senior Technical Directors" }
+                 ].map((item, idx) => (
+                   <div key={idx} className="flex gap-6 items-start">
+                      <div className="w-12 h-12 bg-muted rounded-2xl flex items-center justify-center shrink-0">
+                         <item.icon className="size-5 text-accent" />
+                      </div>
+                      <div>
+                        <span className="block text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground mb-1 ">{item.label}</span>
+                        <p className="text-[13px] font-medium tracking-normal tracking-normal">{item.text}</p>
+                      </div>
+                   </div>
+                 ))}
               </div>
             </div>
 
-            <div className="bg-[#f8f8f8] p-10 md:p-20 rounded-[3rem] border border-black/5 shadow-2xl">
+            <Card className="bg-muted/30 border-none rounded-[4rem] p-10 md:p-20 shadow-none">
               {status === "success" ? (
-                <div className="text-center py-20">
-                  <div className="w-20 h-20 bg-black text-white flex items-center justify-center mx-auto mb-10 rounded-full shadow-xl">
-                     <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                     </svg>
+                <div className="text-center py-20 animate-in fade-in zoom-in duration-500">
+                  <div className="w-24 h-24 bg-accent text-white flex items-center justify-center mx-auto mb-10 rounded-full shadow-2xl">
+                     <CheckCircle2 className="size-12" />
                   </div>
-                  <h2 className="text-3xl font-black uppercase tracking-tighter mb-4">Request Sent</h2>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/30">We will contact you shortly to confirm your slot.</p>
-                  <button 
+                  <h2 className="text-4xl font-medium tracking-normal tracking-tight mb-4 ">Request Logged.</h2>
+                  <p className="text-[10px] font-bold tracking-normal tracking-normal text-muted-foreground mb-16">The technical network will contact you shortly.</p>
+                  <Button 
                     onClick={() => setStatus("idle")}
-                    className="mt-16 px-10 py-4 bg-black text-white text-[10px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-accent hover:scale-105 transition-all shadow-xl"
+                    variant="premium"
+                    size="lg"
+                    className="rounded-full px-12 h-16 text-[11px] font-medium tracking-normal tracking-normal"
                   >
-                    Book Another session
-                  </button>
+                    New Reservation
+                  </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-12">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="group border-b-2 border-black/5 focus-within:border-accent transition-all pb-6">
-                      <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-black/30 mb-4 italic">Full Name</label>
-                      <input 
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="space-y-4">
+                      <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Full Identity</Label>
+                      <Input 
                         required
-                        type="text" 
-                        placeholder="IDENTITY"
-                        className="w-full bg-transparent border-none outline-none text-sm font-black uppercase tracking-widest placeholder:text-black/5"
+                        placeholder="NAME"
+                        className="bg-background border-none h-14 rounded-2xl px-6 text-[11px] font-medium tracking-normal tracking-normal focus-visible:ring-2 focus-visible:ring-accent"
                         value={formData.name}
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                       />
                     </div>
-                    <div className="group border-b-2 border-black/5 focus-within:border-accent transition-all pb-6">
-                      <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-black/30 mb-4 italic">Email Address</label>
-                      <input 
+                    <div className="space-y-4">
+                      <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Communication</Label>
+                      <Input 
                         required
                         type="email" 
-                        placeholder="COMMUNICATION"
-                        className="w-full bg-transparent border-none outline-none text-sm font-black uppercase tracking-widest placeholder:text-black/5"
+                        placeholder="EMAIL"
+                        className="bg-background border-none h-14 rounded-2xl px-6 text-[11px] font-medium tracking-normal tracking-normal focus-visible:ring-2 focus-visible:ring-accent"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="group border-b-2 border-black/5 focus-within:border-accent transition-all pb-6">
-                      <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-black/30 mb-4 italic">Select Service</label>
-                      <select 
-                        className="w-full bg-transparent border-none outline-none text-sm font-black uppercase tracking-widest appearance-none cursor-pointer"
-                        value={formData.service}
-                        onChange={(e) => setFormData({...formData, service: e.target.value})}
-                      >
-                        {services.map(s => <option key={s} value={s}>{s}</option>)}
-                      </select>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="space-y-4">
+                      <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Discipline</Label>
+                      <Select defaultValue={formData.service} onValueChange={(v) => setFormData({...formData, service: v})}>
+                         <SelectTrigger className="bg-background border-none h-14 rounded-2xl px-6 text-[11px] font-medium tracking-normal tracking-normal focus:ring-2 focus:ring-accent">
+                            <SelectValue placeholder="SERVICE" />
+                         </SelectTrigger>
+                         <SelectContent className="bg-background border-border">
+                            {services.map(s => <SelectItem key={s} value={s} className="text-[11px] font-medium tracking-normal tracking-normal">{s}</SelectItem>)}
+                         </SelectContent>
+                      </Select>
                     </div>
-                    <div className="group border-b-2 border-black/5 focus-within:border-accent transition-all pb-6">
-                      <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-black/30 mb-4 italic">Select Location</label>
-                      <select 
-                        className="w-full bg-transparent border-none outline-none text-sm font-black uppercase tracking-widest appearance-none cursor-pointer"
-                        value={formData.location}
-                        onChange={(e) => setFormData({...formData, location: e.target.value})}
-                      >
-                        {locations.map(l => <option key={l} value={l}>{l}</option>)}
-                      </select>
+                    <div className="space-y-4">
+                      <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Sector</Label>
+                      <Select defaultValue={formData.location} onValueChange={(v) => setFormData({...formData, location: v})}>
+                         <SelectTrigger className="bg-background border-none h-14 rounded-2xl px-6 text-[11px] font-medium tracking-normal tracking-normal focus:ring-2 focus:ring-accent">
+                            <SelectValue placeholder="LOCATION" />
+                         </SelectTrigger>
+                         <SelectContent className="bg-background border-border">
+                            {locations.map(l => <SelectItem key={l} value={l} className="text-[11px] font-medium tracking-normal tracking-normal">{l}</SelectItem>)}
+                         </SelectContent>
+                      </Select>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div className="group border-b-2 border-black/5 focus-within:border-accent transition-all pb-6">
-                      <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-black/30 mb-4 italic">Preferred Date</label>
-                      <input 
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="space-y-4">
+                      <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Chronology / Date</Label>
+                      <Input 
                         required
                         type="date" 
-                        className="w-full bg-transparent border-none outline-none text-sm font-black uppercase tracking-widest cursor-pointer"
+                        className="bg-background border-none h-14 rounded-2xl px-6 text-[11px] font-medium tracking-normal tracking-normal focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
                         value={formData.date}
                         onChange={(e) => setFormData({...formData, date: e.target.value})}
                       />
                     </div>
-                    <div className="group border-b-2 border-black/5 focus-within:border-accent transition-all pb-6">
-                      <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-black/30 mb-4 italic">Preferred Time</label>
-                      <input 
+                    <div className="space-y-4">
+                      <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Temporal / Time</Label>
+                      <Input 
                         required
                         type="time" 
-                        className="w-full bg-transparent border-none outline-none text-sm font-black uppercase tracking-widest cursor-pointer"
+                        className="bg-background border-none h-14 rounded-2xl px-6 text-[11px] font-medium tracking-normal tracking-normal focus-visible:ring-2 focus-visible:ring-accent cursor-pointer"
                         value={formData.time}
                         onChange={(e) => setFormData({...formData, time: e.target.value})}
                       />
                     </div>
                   </div>
 
-                  <div className="group border-b-2 border-black/5 focus-within:border-accent transition-all pb-6">
-                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-black/30 mb-4 italic">Message (Optional)</label>
-                    <textarea 
-                      rows={1}
-                      placeholder="SPECIFIC REQUESTS?"
-                      className="w-full bg-transparent border-none outline-none text-sm font-black uppercase tracking-widest placeholder:text-black/5 resize-none"
+                  <div className="space-y-4">
+                    <Label className="text-[10px] font-medium tracking-normal tracking-normal text-muted-foreground  ml-2">Technical Requests</Label>
+                    <Textarea 
+                      placeholder="SPECIFIC REQUIREMENTS..."
+                      className="bg-background border-none rounded-3xl p-6 text-[11px] font-medium tracking-normal tracking-normal focus-visible:ring-2 focus-visible:ring-accent resize-none h-32"
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                     />
                   </div>
 
-                  <button 
+                  <Button 
                     disabled={status === "loading"}
                     type="submit"
-                    className="w-full py-6 bg-black text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-accent hover:scale-[1.02] transition-all disabled:opacity-50 rounded-2xl shadow-xl"
+                    variant="premium"
+                    className="w-full h-16 text-[11px] font-medium tracking-normal tracking-normal rounded-[1.5rem]"
                   >
-                    {status === "loading" ? "Processing..." : "Confirm Request"}
-                  </button>
+                    {status === "loading" ? "Processing..." : "Confirm Registration"}
+                  </Button>
                   
                   {status === "error" && (
-                    <p className="text-[10px] font-black text-accent uppercase text-center mt-6 tracking-widest">Something went wrong. Please try again.</p>
+                    <p className="text-[11px] font-medium text-destructive tracking-normal text-center mt-6 tracking-normal ">Synchronization error. Please retry.</p>
                   )}
                 </form>
               )}
-            </div>
+            </Card>
           </div>
         </div>
       </main>

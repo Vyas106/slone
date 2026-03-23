@@ -2,10 +2,10 @@ import ContentPage from "@/components/ContentPage";
 
 export default function StylingProducts() {
   const items = [
-    { name: "Raw Texture Clay", category: "Finish", price: "$42.00" },
-    { name: "Hydrating Mist", category: "Prep", price: "$38.00" },
-    { name: "Volume Serum", category: "Style", price: "$45.00" },
-    { name: "Satin Pomade", category: "Finish", price: "$40.00" },
+    { name: "Raw Texture Clay", category: "Finish", price: "₹3,486" },
+    { name: "Hydrating Mist", category: "Prep", price: "₹3,154" },
+    { name: "Volume Serum", category: "Style", price: "₹3,735" },
+    { name: "Satin Pomade", category: "Finish", price: "₹3,320" },
   ];
 
   return (

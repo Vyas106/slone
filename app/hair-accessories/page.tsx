@@ -2,10 +2,10 @@ import ContentPage from "@/components/ContentPage";
 
 export default function HairAccessories() {
   const items = [
-    { name: "Silk Scrunchie", category: "Care", price: "$22.00" },
-    { name: "Matte Claw Clip", category: "Style", price: "$28.00" },
-    { name: "Minimalist Pins", category: "Detail", price: "$15.00" },
-    { name: "Leather Wrap", category: "Luxury", price: "$65.00" },
+    { name: "Silk Scrunchie", category: "Care", price: "₹1,826" },
+    { name: "Matte Claw Clip", category: "Style", price: "₹2,324" },
+    { name: "Minimalist Pins", category: "Detail", price: "₹1,200" },
+    { name: "Leather Wrap", category: "Luxury", price: "₹5,395" },
   ];
 
   return (

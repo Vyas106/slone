@@ -3,7 +3,7 @@ import ContentPage from "@/components/ContentPage";
 export default function Stores() {
   const items = [
     { name: "Flagship Studio", category: "Downtown", price: "OPEN" },
-    { name: "The Lab", category: "East Side", price: "APPOINTMENT ONLY" },
+    { name: "The Lab", category: "Jubilee Hills", price: "APPOINTMENT ONLY" },
     { name: "Slone Concept", category: "West Side", price: "OPEN" },
     { name: "Boutique Corner", category: "Airport", price: "CLOSED" },
   ];

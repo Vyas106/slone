@@ -4,280 +4,302 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { ArrowRight, Play, Check, Zap, Shield, Sparkles } from "lucide-react";
 
 const products = [
-  { id: 1, name: "Multi-Styler", category: "Styling Tool", price: "$599.99", image: "/ui-assets/slone_multistyler_product_1774251709398.png" },
-  { id: 2, name: "Hair Dryer", category: "Engineered to dry", price: "$429.99", image: "/ui-assets/slone_hairdryer_product_1774251734895.png" },
-  { id: 3, name: "Travel Bag", category: "Storage & Accessories", price: "$50.00", image: "/ui-assets/slone_products_grid_1774251180772.png" },
+  { id: 1, name: "AirSense Multi-Styler", category: "Technical Tool", price: "₹49,999", image: "/ui-assets/slone_multistyler_product_1774251709398.png", badge: "Flagship" },
+  { id: 2, name: "TurboDry Precision", category: "Engineered Dry", price: "₹35,999", image: "/ui-assets/slone_hairdryer_product_1774251734895.png", badge: "Best Seller" },
+  { id: 3, name: "Tech-Satin Travel Case", category: "Engineering", price: "₹12,499", image: "/ui-assets/slone_products_grid_1774251180772.png", badge: "New" },
 ];
 
 const categories = [
-  { title: "Great Hair Smooth", label: "For silky, sleek finishes", img: "/ui-assets/slone_smooth_hair_box_1774251774708.png" },
-  { title: "Great Hair Waved", label: "For bouncy, textured waves", img: "/ui-assets/slone_about_portrait_1774251162203.png" },
-  { title: "Great Hair Curly", label: "For defined, healthy curls", img: "/ui-assets/slone_stylist_expert_1774251216631.png" },
-  { title: "Great Hair Tools", label: "Professional grade gear", img: "/ui-assets/slone_hero_tool_1774251140173.png" },
+  { title: "Technical Smooth", label: "For silk-engineered finishes", img: "/ui-assets/slone_smooth_hair_box_1774251774708.png" },
+  { title: "Sculpted Waves", label: "Architecture for texture", img: "/ui-assets/slone_about_portrait_1774251162203.png" },
+  { title: "Curvature Formula", label: "Bio-defined curl patterns", img: "/ui-assets/slone_stylist_expert_1774251216631.png" },
+  { title: "Master Gear", label: "Artisan-grade hardware", img: "/ui-assets/slone_hero_tool_1774251140173.png" },
 ];
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-black selection:bg-accent selection:text-white">
+    <div className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-white">
       <Navbar hero />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center bg-[#f5f5f7] overflow-hidden pt-20">
+      <section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center bg-muted/30 overflow-hidden pt-20">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] -translate-y-1/2" />
         <div className="container-standard w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <div className="z-10 order-2 lg:order-1">
-            <h1 className="text-6xl md:text-[5rem] xl:text-[7.5rem] font-black uppercase tracking-tighter mb-8 leading-[0.85]">
-              Air Sense <br /> <span className="text-accent italic">Technology.</span>
+             <Badge variant="outline" className="mb-6 px-4 py-1.5 border-accent text-accent font-medium tracking-normal tracking-normal  rounded-full">
+                Series.01 / Evolution
+             </Badge>
+            <h1 className="text-6xl md:text-[5.5rem] xl:text-[8rem] font-medium tracking-normal tracking-tight mb-8 leading-[0.8] animate-in fade-in slide-in-from-bottom-8 duration-700">
+              Air Sense <br /> <span className="text-accent ">Engineering.</span>
             </h1>
-            <p className="text-black/40 text-[10px] md:text-sm font-bold max-w-sm mb-12 tracking-[0.1em] leading-relaxed uppercase">
-              Precisely engineered for salon-grade performance, without the extreme heat damage.
+            <p className="text-muted-foreground text-[11px] md:text-sm font-bold max-w-sm mb-12 tracking-normal leading-relaxed tracking-normal opacity-80">
+              Redefining precision styling with zero-heat-damage architecture. Built for the modern artisan.
             </p>
-            <button className="group relative px-12 py-5 bg-black text-white text-[10px] font-black uppercase tracking-[0.3em] overflow-hidden transition-all duration-500 hover:pr-16 rounded-full">
-              <span className="relative z-10">Shop Technology</span>
-              <span className="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500">→</span>
-            </button>
-          </div>
-          <div className="relative aspect-square order-1 lg:order-2 flex items-center justify-center">
-            <div className="absolute inset-0 bg-accent/5 rounded-full blur-[120px]" />
-            <div className="relative w-full h-full group">
-              <Image
-                src="/ui-assets/slone_hero_tool_1774251140173.png"
-                alt="Slone Hair Tool"
-                fill
-                className="object-contain scale-110 group-hover:scale-115 transition-all duration-[2s] ease-out drop-shadow-[0_35px_35px_rgba(0,0,0,0.15)]"
-                priority
-              />
+            <div className="flex flex-wrap gap-4">
+               <Button size="lg" className="rounded-full px-12 py-8 text-[11px] font-medium tracking-normal tracking-normal shadow-2xl" render={<Link href="/hair-tools" />} nativeButton={false}>
+                  Explore Technology
+               </Button>
+               <Button variant="outline" size="lg" className="rounded-full px-12 py-8 text-[11px] font-medium tracking-normal tracking-normal border-2 group">
+                  <Play className="fill-current mr-3 size-4 -translate-y-0.5" />
+                  Technical Film
+               </Button>
             </div>
+          </div>
+          <div className="relative order-1 lg:order-2">
+            <AspectRatio ratio={1} className="flex items-center justify-center p-12">
+               <Image
+                 src="/ui-assets/slone_hero_tool_1774251140173.png"
+                 alt="Slone Hair Tool"
+                 fill
+                 className="object-contain scale-125 hover:rotate-6 transition-all duration-[2s] ease-out drop-shadow-[0_50px_50px_rgba(0,0,0,0.15)] drop-shadow-[0_10px_10px_var(--accent)]"
+                 priority
+               />
+            </AspectRatio>
           </div>
         </div>
-        <div className="absolute bottom-12 right-12 text-[10vw] font-black opacity-[0.02] select-none pointer-events-none italic uppercase">SLONE</div>
+        <div className="absolute bottom-12 right-12 text-[12vw] font-medium opacity-[0.03] select-none pointer-events-none  tracking-normal leading-none">SLONE.</div>
       </section>
 
-      {/* Great Hair Made Easy */}
-      <section className="section-padding bg-white overflow-hidden">
-        <div className="container-standard grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl group">
-            <Image src="/ui-assets/slone_about_portrait_1774251162203.png" alt="Styling" fill className="object-cover group-hover:scale-105 transition-transform duration-[3s]" />
-            <div className="absolute inset-x-8 bottom-8 p-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl">
-              <span className="text-white text-[10px] font-black tracking-widest uppercase mb-2 block">Premium Craft</span>
-              <p className="text-white text-xl md:text-2xl font-black uppercase tracking-tight">The Modern Standard of Hair Education.</p>
-            </div>
-          </div>
-          <div className="">
-            <h2 className="text-5xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tighter mb-10 leading-none">Great Hair <br /> Made Easy.</h2>
-            <p className="text-base font-bold leading-relaxed text-black/40 max-w-md mb-12 uppercase tracking-wide">
-              We've distilled decades of professional experience into tools that are intuitive, powerful, and gentle. Experience salon results in your hands.
-            </p>
-            <div className="flex gap-12">
-              <Link href="#" className="flex flex-col gap-2 group">
-                <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-accent transition-colors">Our Story</span>
-                <div className="h-0.5 w-12 bg-black group-hover:w-full group-hover:bg-accent transition-all duration-500" />
-              </Link>
-              <Link href="#" className="flex flex-col gap-2 group">
-                <span className="text-[10px] font-black uppercase tracking-widest group-hover:text-accent transition-colors">The Process</span>
-                <div className="h-0.5 w-12 bg-black/10 group-hover:w-full group-hover:bg-accent transition-all duration-500" />
-              </Link>
-            </div>
+      {/* About Section */}
+      <section className="section-padding overflow-hidden">
+        <div className="container-standard grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-40 items-center">
+          <Card className="border-none shadow-none bg-transparent">
+            <CardHeader className="p-0 mb-12">
+               <span className="text-accent font-medium text-[10px] tracking-normal tracking-normal  mb-6 block">Artisan Mastery</span>
+               <h2 className="text-5xl lg:text-7xl xl:text-8xl font-medium tracking-normal tracking-tight leading-none mb-8">Great Hair <br /> Engineered.</h2>
+               <CardDescription className="text-base font-bold leading-relaxed text-muted-foreground max-w-md tracking-normal tracking-wide">
+                  At ONE HAIR SLONE, we believe beauty is a technical discipline. Our tools are the bridge between engineering precision and individual expression.
+               </CardDescription>
+            </CardHeader>
+            <CardContent className="p-0 flex gap-8">
+               <Button variant="link" className="p-0 text-[11px] font-medium tracking-normal tracking-normal text-foreground hover:text-accent decoration-2" render={<Link href="/hair-stories" />} nativeButton={false}>
+                  Our Thesis
+               </Button>
+               <Button variant="link" className="p-0 text-[11px] font-medium tracking-normal tracking-normal text-foreground hover:text-accent decoration-2" render={<Link href="/stores" />} nativeButton={false}>
+                  The Studios
+               </Button>
+            </CardContent>
+          </Card>
+          
+          <div className="relative">
+            <AspectRatio ratio={4/5} className="overflow-hidden rounded-[4rem] group shadow-2xl">
+               <Image src="/ui-assets/slone_about_portrait_1774251162203.png" alt="Styling" fill className="object-cover group-hover:scale-110 transition-transform duration-[3s]" />
+               <div className="absolute inset-x-8 bottom-8 p-10 bg-background/20 backdrop-blur-3xl border border-white/20 rounded-3xl">
+                  <span className="text-white text-[10px] font-medium tracking-normal tracking-normal mb-2 block opacity-60">Session.001</span>
+                  <p className="text-white text-2xl font-medium tracking-normal tracking-tight">Technical Mastery of Texture.</p>
+               </div>
+            </AspectRatio>
           </div>
         </div>
       </section>
 
       {/* Grid Collections */}
-      <section className="section-padding bg-[#fafafa]">
-        <div className="container-standard grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-          {categories.map((cat, i) => (
-            <div key={i} className="group relative aspect-[14/15] overflow-hidden bg-white rounded-3xl shadow-sm border border-black/5 cursor-pointer">
-              <Image src={cat.img} alt={cat.title} fill className="object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-[2s]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <span className="text-accent text-[9px] font-bold tracking-[0.3em] uppercase mb-2 group-hover:translate-x-1 transition-transform">Collection {i + 1}</span>
-                <h3 className="text-white text-2xl font-black uppercase tracking-tighter mb-6 group-hover:-translate-y-1 transition-transform">{cat.title}</h3>
-                <button className="w-full py-4 bg-white text-black text-[9px] font-black uppercase tracking-[0.2em] translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 rounded-xl">Shop Collection</button>
-              </div>
-            </div>
-          ))}
+      <section className="section-padding bg-muted/40">
+        <div className="container-standard">
+           <div className="flex justify-between items-end mb-20">
+              <h2 className="text-4xl lg:text-6xl font-medium tracking-normal tracking-tight ">Collections.</h2>
+              <Button variant="premium" size="sm" className="rounded-full px-8 text-[9px] font-medium tracking-normal tracking-normal" render={<Link href="/hair-tools" />} nativeButton={false}>View All</Button>
+           </div>
+           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+             {categories.map((cat, i) => (
+               <Card key={i} className="group relative aspect-[14/15] overflow-hidden border-none rounded-[3rem] shadow-xl hover:-translate-y-2 transition-transform duration-500 cursor-pointer">
+                 <Image src={cat.img} alt={cat.title} fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2s]" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                 <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                   <Badge className="w-max bg-accent text-[9px] font-bold tracking-normal tracking-normal mb-4 py-1.5 px-4">0{i + 1}</Badge>
+                   <h3 className="text-white text-3xl font-medium tracking-normal tracking-tight mb-8">{cat.title}</h3>
+                   <Button variant="premium" className="w-full h-14 rounded-2xl text-[9px] font-medium tracking-normal tracking-normal translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">Shop Archive</Button>
+                 </div>
+               </Card>
+             ))}
+           </div>
         </div>
       </section>
 
-      {/* Spotlight */}
-      <section className="section-padding bg-white">
-        <div className="container-standard flex flex-col">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-20">
+      {/* Spotlight Carousel */}
+      <section className="section-padding bg-background">
+        <div className="container-standard">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-24">
             <div>
-              <span className="text-accent text-[10px] font-black tracking-[0.4em] uppercase mb-4 block italic">Recommended for you</span>
-              <h2 className="text-5xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tighter mb-8 leading-none italic-none">Spotlight.</h2>
-              <div className="flex flex-wrap gap-10">
-                {["All Gear", "Brushes", "Storage", "Kits"].map((tab, i) => (
-                  <button key={tab} className={`text-[10px] font-black uppercase tracking-[0.25em] transition-all pb-1 ${i === 0 ? "text-black border-b-2 border-accent" : "text-black/30 hover:text-black border-b-2 border-transparent"}`}>{tab}</button>
-                ))}
-              </div>
+              <span className="text-accent text-[11px] font-medium tracking-normal tracking-normal mb-6 block ">Hardware spotlight</span>
+              <h2 className="text-6xl lg:text-[7rem] font-medium tracking-normal tracking-tight  leading-none">Engineering.</h2>
             </div>
             <div className="flex gap-4">
-              <button className="p-6 border border-black/5 bg-[#f5f5f7] rounded-full hover:bg-black hover:text-white transition-all shadow-sm"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg></button>
-              <button className="p-6 border border-black/5 bg-[#f5f5f7] rounded-full hover:bg-black hover:text-white transition-all shadow-sm"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg></button>
+               {/* Controls integrated into UI if needed, or use carousel buttons */}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20">
             {products.map((product) => (
-              <div key={product.id} className="group cursor-pointer">
-                <div className="relative aspect-square bg-[#f8f8f8] flex items-center justify-center p-16 overflow-hidden rounded-[2.5rem] mb-10 group-hover:bg-[#f3f3f3] transition-colors duration-500 border border-black/5">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-contain p-16 group-hover:rotate-6 group-hover:scale-110 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute top-8 right-8 w-12 h-12 bg-white shadow-xl rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-                  </div>
+              <div key={product.id} className="group flex flex-col">
+                <div className="relative aspect-square bg-muted/30 rounded-[4rem] border border-border group-hover:bg-muted/50 transition-colors duration-700 overflow-hidden mb-12 flex items-center justify-center p-12">
+                   <Badge className="absolute top-10 left-10 py-1.5 px-6 rounded-full bg-foreground text-background text-[10px] font-medium tracking-normal tracking-normal opacity-0 group-hover:opacity-100 transition-all transform -translate-y-2 group-hover:translate-y-0 ">{product.badge}</Badge>
+                   <Image
+                     src={product.image}
+                     alt={product.name}
+                     fill
+                     className="object-contain p-16 group-hover:scale-115 group-hover:rotate-3 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] drop-shadow-2xl"
+                   />
+                   <Button variant="premium" size="icon" className="absolute bottom-10 right-10 w-16 h-16 rounded-full opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 shadow-2xl">
+                      <Zap className="size-6 fill-current" />
+                   </Button>
                 </div>
-                <div className="flex justify-between items-start px-4">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent/60 mb-2 block italic">{product.category}</span>
-                    <h3 className="text-2xl font-black uppercase tracking-tight group-hover:text-accent transition-colors">{product.name}</h3>
+                <div className="flex justify-between items-start px-2">
+                  <div className="space-y-2">
+                    <span className="text-[11px] font-medium tracking-normal tracking-normal text-accent/50 ">{product.category}</span>
+                    <h3 className="text-3xl font-medium tracking-normal tracking-tight group-hover:text-accent transition-colors leading-none">{product.name}</h3>
                   </div>
-                  <span className="text-lg font-black text-black/80">{product.price}</span>
+                  <span className="text-2xl font-medium tracking-tight">{product.price}</span>
                 </div>
-                <button className="mt-10 w-full py-6 bg-black text-white text-[10px] font-black uppercase tracking-[0.4em] transition-all rounded-2xl hover:bg-accent hover:scale-[1.02] shadow-xl">Add To Cart</button>
+                <Button className="mt-12 w-full py-8 text-[11px] font-medium tracking-normal tracking-normal rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform" render={<Link href="/hair-tools" />} nativeButton={false}>Inventory Drop</Button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Kits Section */}
-      <section className="section-padding bg-[#eeeff1]">
-        <div className="container-standard grid grid-cols-1 lg:grid-cols-5 items-center gap-16 lg:gap-32">
-          <div className="lg:col-span-2">
-            <span className="text-accent text-xs font-black tracking-widest mb-6 block uppercase italic">Bundle & Save</span>
-            <h2 className="text-5xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tighter mb-10 leading-[0.9]">Save with our <br /> Greatest Kits.</h2>
-            <p className="text-sm text-black/50 font-bold mb-12 max-w-sm uppercase leading-relaxed tracking-wider">Curated sets designed for specific textures and desired outcomes. Efficiency meets luxury.</p>
-            <button className="group relative px-16 py-6 bg-black text-white text-[10px] font-black uppercase tracking-[0.4em] rounded-full overflow-hidden shadow-2xl">
-              <span className="relative z-10">Shop All Kits</span>
-              <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            </button>
+      {/* Feature Kits */}
+      <section className="section-padding bg-foreground text-background relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-full h-[500px] bg-accent/20 blur-[150px] -translate-y-1/2 opacity-20" />
+        <div className="container-standard grid grid-cols-1 lg:grid-cols-5 items-center gap-24 lg:gap-40">
+          <div className="lg:col-span-2 relative z-10">
+            <span className="text-accent text-xs font-medium tracking-normal mb-8 block tracking-normal ">System Bundles</span>
+            <h2 className="text-6xl lg:text-[6.5rem] font-medium tracking-normal tracking-tight mb-10 leading-[0.85]">Technical <br /> Solutions.</h2>
+            <p className="text-lg text-background/40 font-bold mb-14 max-w-sm tracking-normal leading-relaxed tracking-wider -none">
+               Curated technical sequences designed for specific architectural outcomes. Engineering for beauty.
+            </p>
+            <div className="space-y-6 mb-16">
+               {[
+                  { icon: Zap, text: "AirSense Digital Control" },
+                  { icon: Shield, text: "Ultra-Zero Heat Protection" },
+                  { icon: Sparkles, text: " Artisan Signature Finish" }
+               ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-4">
+                     <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                        <item.icon className="size-5 text-white" />
+                     </div>
+                     <span className="text-[10px] font-medium tracking-normal tracking-normal">{item.text}</span>
+                  </div>
+               ))}
+            </div>
+            <Button variant="premium" size="lg" className="rounded-full px-16 h-16 text-[11px] font-medium tracking-normal tracking-normal border-background border-2 hover:bg-background hover:text-foreground" render={<Link href="/kits" />} nativeButton={false}>
+               Archive All Kits
+            </Button>
           </div>
-          <div className="lg:col-span-3 relative aspect-[4/3] bg-white rounded-[4rem] overflow-hidden p-16 flex items-center justify-center shadow-2xl border border-white">
-            <Image src="/ui-assets/slone_hairset_kit_1774251754031.png" alt="Kits" fill className="object-contain p-20 scale-125" />
+          <div className="lg:col-span-3 relative">
+            <AspectRatio ratio={4/3} className="bg-muted-foreground/10 rounded-[5rem] overflow-hidden p-20 flex items-center justify-center border border-white/5 backdrop-blur-3xl group shadow-[0_0_100px_rgba(0,0,0,0.5)]">
+               <Image src="/ui-assets/slone_hairset_kit_1774251754031.png" alt="Kits" fill className="object-contain p-20 scale-125 group-hover:scale-150 transition-all duration-[3s] ease-out drop-shadow-[0_50px_50px_rgba(0,0,0,0.4)]" />
+            </AspectRatio>
           </div>
         </div>
       </section>
 
-      {/* Stories */}
-      <section className="section-padding bg-white">
-        <div className="container-standard text-center">
-          <span className="text-accent text-[10px] font-black tracking-widest mb-6 block uppercase italic">Community Gallery</span>
-          <h2 className="text-5xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tighter mb-16 italic-none">Great Hair Stories.</h2>
+      {/* Community / Stories */}
+      <section className="section-padding bg-background">
+        <div className="container-standard">
+          <div className="text-center mb-24 max-w-4xl mx-auto">
+             <span className="text-accent text-[11px] font-medium tracking-normal tracking-normal mb-8 block ">社區 network</span>
+             <h2 className="text-6xl lg:text-[8rem] font-medium tracking-normal tracking-tight  leading-none mb-12">One Hair Community.</h2>
+             <p className="text-muted-foreground text-[11px] font-medium tracking-normal tracking-normal opacity-40">Witness the evolution of community-led technical transformations.</p>
+          </div>
           
-          <div className="flex justify-center gap-10 overflow-x-auto pb-16 scrollbar-hide px-4 mb-16">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="flex flex-col items-center gap-6 shrink-0 transition-all hover:scale-110">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-accent to-blue-300 p-0.5 shadow-xl">
-                  <div className="w-full h-full rounded-full border-4 border-white overflow-hidden relative">
-                    <Image src={`/ui-assets/slone_stylist_expert_1774251216631.png`} alt="User" fill className="object-cover" />
-                  </div>
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-widest opacity-40 italic">@client_{i}</span>
-              </div>
-            ))}
-          </div>
+          <Carousel className="w-full max-w-7xl mx-auto mb-20 px-12">
+             <CarouselContent>
+               {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                 <CarouselItem key={i} className="basis-1/3 md:basis-1/4 lg:basis-1/6 flex flex-col items-center gap-8">
+                   <Avatar className="w-32 h-32 border-4 border-muted hover:border-accent transition-all cursor-pointer shadow-xl">
+                     <AvatarImage src={`/ui-assets/slone_stylist_expert_1774251216631.png`} />
+                     <AvatarFallback>U{i}</AvatarFallback>
+                   </Avatar>
+                   <span className="text-[10px] font-medium tracking-normal tracking-normal opacity-30 ">Network.ID_{i}</span>
+                 </CarouselItem>
+               ))}
+             </CarouselContent>
+             <CarouselPrevious className="hidden md:flex -left-12 bg-foreground text-background" />
+             <CarouselNext className="hidden md:flex -right-12 bg-foreground text-background" />
+          </Carousel>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="aspect-[3/4] relative overflow-hidden group rounded-3xl shadow-sm">
-                <Image src={`/ui-assets/slone_about_portrait_1774251162203.png`} alt="Style" fill className="object-cover group-hover:scale-110 transition-transform duration-[2s]" />
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-8 gap-8 backdrop-blur-sm">
-                  <p className="text-white text-[11px] font-black tracking-widest uppercase">The Sleek Routine</p>
-                  <button className="px-8 py-4 bg-white text-black text-[9px] font-black uppercase tracking-widest hover:bg-accent hover:text-white transition-all rounded-full">View Product</button>
-                </div>
-              </div>
+               <Card key={i} className="group relative aspect-[3/4] overflow-hidden rounded-[3rem] border-none shadow-2xl hover:scale-[1.02] transition-all duration-500">
+                 <Image src={`/ui-assets/slone_about_portrait_1774251162203.png`} alt="Style" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-[2s]" />
+                 <div className="absolute inset-x-6 bottom-6 p-6 bg-background/20 backdrop-blur-2xl border border-white/10 rounded-3xl opacity-0 group-hover:opacity-100 translate-y-8 group-hover:translate-y-0 transition-all duration-700">
+                    <p className="text-white text-[10px] font-medium tracking-normal tracking-normal mb-4">Geometric Smooth</p>
+                    <Button variant="premium" className="w-full h-10 rounded-xl text-[9px] font-medium tracking-normal tracking-normal">View Routine</Button>
+                 </div>
+               </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Spaces */}
-      <section className="section-padding bg-[#000] text-white">
-        <div className="container-standard grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-32 items-center">
-          <div className="lg:col-span-3 aspect-[16/10] relative overflow-hidden rounded-[3rem] group border border-white/5 shadow-2xl">
-            <Image src="/ui-assets/slone_salon_interior_1774251198985.png" alt="Salon" fill className="object-cover group-hover:scale-110 transition-transform duration-[4s]" />
-            <div className="absolute top-12 left-12 p-8 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-3xl">
-              <span className="block text-accent text-[10px] font-black tracking-widest uppercase mb-2 italic">Visit Us</span>
-              <p className="text-3xl font-black uppercase tracking-tight">Los Angeles Flagship</p>
-            </div>
+      <section className="section-padding bg-foreground text-background overflow-hidden relative">
+         <div className="absolute top-0 right-0 w-[80%] h-full bg-accent/5 blur-[120px]" />
+        <div className="container-standard grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-40 items-center">
+          <div className="lg:col-span-3">
+             <AspectRatio ratio={16/10} className="relative overflow-hidden rounded-[4rem] group border border-white/5 shadow-2xl">
+                <Image src="/ui-assets/slone_salon_interior_1774251198985.png" alt="Salon" fill className="object-cover group-hover:scale-110 transition-transform duration-[4s]" />
+                <div className="absolute top-12 left-12 p-12 bg-background/10 backdrop-blur-3xl border border-white/10 rounded-[3rem] shadow-2xl">
+                  <span className="block text-accent text-[11px] font-medium tracking-normal tracking-normal mb-4 ">Sanctuary</span>
+                  <p className="text-4xl md:text-5xl font-medium tracking-normal tracking-tight">One Hair Flagship.</p>
+                </div>
+             </AspectRatio>
           </div>
-          <div className="lg:col-span-2">
-            <h2 className="text-6xl lg:text-[7rem] font-black uppercase tracking-tighter mb-10 leading-[0.85]">Our Spaces.</h2>
-            <p className="text-lg font-bold leading-relaxed text-white/30 mb-12 max-sm uppercase tracking-wide">
-              Physical sanctuaries designed for transformation. Experience personalized consultations and technical mastery.
+          <div className="lg:col-span-2 relative z-10">
+            <h2 className="text-7xl lg:text-[8rem] xl:text-[9rem] font-medium tracking-normal tracking-tight mb-12 leading-[0.8] -none">Spaces.</h2>
+            <p className="text-lg font-bold leading-relaxed text-background/40 mb-16 max-w-sm tracking-normal tracking-normal ">
+               Physical laboratories designed for precision. Experience technical mastery, firsthand.
             </p>
-            <div className="grid grid-cols-1 gap-6">
-              {["DOWNTOWN LA", "SOHO NEW YORK", "WEST LONDON"].map((loc) => (
-                <Link href="/book-now" key={loc} className="group p-10 bg-white/5 border border-white/10 rounded-[2rem] flex justify-between items-center hover:bg-accent hover:border-accent transition-all cursor-pointer">
-                  <span className="text-base font-black uppercase tracking-[0.2em]">{loc}</span>
-                  <svg className="w-6 h-6 -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all font-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </Link>
+            <div className="flex flex-col gap-6">
+              {["BANDRA, MUMBAI", "DEFENCE COLONY, DELHI", "KORAMANGALA, BLR"].map((loc) => (
+                <Button key={loc} variant="outline" className="h-24 hover:bg-accent border-white/10 justify-between px-10 rounded-[2.5rem] group" render={<Link href="/book-now" />} nativeButton={false}>
+                   <span className="text-lg font-medium tracking-normal tracking-normal">{loc}</span>
+                   <ArrowRight className="size-8 -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all font-medium" />
+                </Button>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Experts Section */}
-      <section className="section-padding bg-white">
-        <div className="container-standard">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12 mb-24 border-b border-black/5 pb-16">
-            <h2 className="text-6xl lg:text-8xl font-black uppercase tracking-tighter italic-none">Experts.</h2>
-            <button className="text-[10px] font-black uppercase tracking-[0.4em] bg-black text-white px-12 py-5 rounded-full hover:bg-accent transition-all shadow-2xl hover:scale-105 italic">View All Masters</button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="group cursor-pointer">
-                <div className="aspect-[4/5] relative overflow-hidden rounded-[3rem] mb-10 bg-[#f5f5f7] shadow-sm border border-black/5 overflow-hidden">
-                  <Image src="/ui-assets/slone_stylist_expert_1774251216631.png" alt="Stylist" fill className="object-cover group-hover:scale-110 transition-transform duration-[2s]" />
-                  <div className="absolute inset-x-8 bottom-8 p-8 bg-white/20 backdrop-blur-3xl border border-white/30 rounded-2xl translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
-                    <Link href="/book-now" className="w-full py-5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl text-center block rounded-xl hover:bg-accent hover:text-white transition-all">
-                      Book Now
-                    </Link>
-                  </div>
-                </div>
-                <h3 className="text-2xl font-black uppercase tracking-tight mb-2">ELENA RIVERA</h3>
-                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-accent italic">Creative Director</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Newsletter */}
-      <section className="section-padding bg-black text-white relative overflow-hidden">
+      <section className="section-padding bg-background text-foreground relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-accent/5 blur-[150px]" />
         <div className="container-standard">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-40">
             <div className="flex flex-col justify-between">
               <div>
-                <h2 className="text-5xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tighter mb-10 italic leading-[0.9]">Join our <br /> Newsletter.</h2>
-                <p className="text-sm font-bold uppercase tracking-[0.4em] text-white/30 mb-16 max-w-sm italic">Access to limited technical drops and styling secrets from our master network.</p>
-                <form className="max-w-xl flex gap-x-2 p-2 bg-white/5 border border-white/10 rounded-full focus-within:border-accent group transition-all items-center">
-                  <input
+                <h2 className="text-6xl lg:text-7xl xl:text-[8rem] font-medium tracking-normal tracking-tight mb-12  leading-[0.8]">Network.</h2>
+                <p className="text-sm font-bold tracking-normal tracking-normal text-muted-foreground mb-20 max-w-sm  opacity-60">Join the technical distribution network for exclusive artisan drops.</p>
+                <form className="max-w-xl flex gap-x-2 p-2 bg-muted/50 border border-border rounded-full focus-within:border-accent group transition-all items-center shadow-inner">
+                  <Input
                     type="email"
                     placeholder="YOUR@IDENTITY.COM"
-                    className="flex-1 bg-transparent px-8 py-4 text-[11px] font-black uppercase tracking-[0.5em] outline-none placeholder:text-white/20"
+                    className="flex-1 bg-transparent border-none px-8 h-14 text-[11px] font-medium tracking-normal tracking-normal outline-none shadow-none focus-visible:ring-0"
                   />
-                  <button className="px-10 py-4 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-full hover:bg-accent hover:text-white transition-all shadow-xl shrink-0">Enroll</button>
+                  <Button className="rounded-full h-14 px-12 text-[10px] font-medium tracking-normal tracking-normal">Register</Button>
                 </form>
               </div>
 
-              <div className="pt-20 mt-20 border-t border-white/10 flex gap-24">
-                <div className="flex flex-col gap-3">
-                  <span className="text-5xl font-black italic">14k+</span>
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Active Stylists</span>
+              <div className="pt-24 mt-24 border-t border-border flex gap-24">
+                <div className="flex flex-col gap-4">
+                  <span className="text-6xl font-medium  tracking-tight leading-none">14k+</span>
+                  <span className="text-[11px] font-medium tracking-normal tracking-normal text-muted-foreground opacity-40 ">Global Artisans</span>
                 </div>
-                <div className="flex flex-col gap-3">
-                  <span className="text-5xl font-black italic">50+</span>
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Global Studios</span>
+                <div className="flex flex-col gap-4">
+                  <span className="text-6xl font-medium  tracking-tight leading-none">50+</span>
+                  <span className="text-[11px] font-medium tracking-normal tracking-normal text-muted-foreground opacity-40 ">Flagship Studios</span>
                 </div>
               </div>
             </div>
@@ -285,29 +307,33 @@ export default function Home() {
             <div className="space-y-16">
               <div className="grid grid-cols-2 gap-8">
                 {[
-                  { num: "01", label: "FREE SHIPPING", icon: "📦" },
-                  { num: "02", label: "30-DAY TRIALS", icon: "🔃" },
-                  { num: "03", label: "SALON SUPPORT", icon: "🏢" },
-                  { num: "04", label: "PRO PROGRAM", icon: "✨" }
-                ].map((item) => (
-                  <div key={item.num} className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] group hover:border-accent transition-all cursor-pointer">
-                    <span className="text-accent text-xs font-black italic block mb-6">{item.num} /</span>
-                    <div className="text-4xl mb-4 group-hover:scale-125 transition-transform block origin-left">{item.icon}</div>
-                    <h4 className="text-[11px] font-black uppercase tracking-[0.3em] italic">{item.label}</h4>
-                  </div>
+                  { label: "FREE SHIPPING", icon: Zap },
+                  { label: "30-DAY TRIALS", icon: Shield },
+                  { label: "SALON SUPPORT", icon: Sparkles },
+                  { label: "PRO PROGRAM", icon: Zap }
+                ].map((item, i) => (
+                  <Card key={i} className="p-12 bg-muted/40 border-border rounded-[3rem] group hover:bg-accent hover:border-accent transition-all cursor-pointer shadow-lg overflow-hidden relative">
+                    <span className="text-accent group-hover:text-white text-xs font-medium  block mb-8 opacity-40">Drop.0{i + 1} /</span>
+                    <item.icon className="size-12 mb-6 group-hover:scale-125 group-hover:text-white transition-transform block origin-left text-accent" />
+                    <h4 className="text-[11px] font-medium tracking-normal tracking-normal  group-hover:text-white transition-colors">{item.label}</h4>
+                    <div className="absolute -bottom-8 -right-8 size-32 bg-accent/10 rounded-full blur-2xl group-hover:bg-white/20 transition-all" />
+                  </Card>
                 ))}
               </div>
 
-              <div className="p-10 border-2 border-accent/20 rounded-[2.5rem] flex flex-col md:flex-row items-center justify-between gap-10 bg-accent/5 backdrop-blur-3xl">
-                <span className="text-[11px] font-black uppercase tracking-[0.5em] text-accent italic">Next technical drop in</span>
-                <div className="flex gap-8 text-4xl font-black italic">
-                  <div className="flex flex-col items-center"><span>12</span><span className="text-[8px] italic-none opacity-30 uppercase tracking-widest mt-2">Hrs</span></div>
-                  <span className="opacity-20">:</span>
-                  <div className="flex flex-col items-center"><span>45</span><span className="text-[8px] italic-none opacity-30 uppercase tracking-widest mt-2">Min</span></div>
-                  <span className="opacity-20">:</span>
-                  <div className="flex flex-col items-center"><span>30</span><span className="text-[8px] italic-none opacity-30 uppercase tracking-widest mt-2">Sec</span></div>
+              <Card className="p-12 border-2 border-accent/20 rounded-[3.5rem] flex flex-col md:flex-row items-center justify-between gap-12 bg-accent/5 backdrop-blur-3xl shadow-[0_0_50px_rgba(var(--accent),0.1)]">
+                <div className="space-y-3">
+                   <Badge className="bg-accent text-[9px] font-medium tracking-normal tracking-normal py-1 px-4 ">Countdown</Badge>
+                   <span className="text-[11px] font-medium tracking-normal tracking-normal text-accent  block">Mechanical drop in</span>
                 </div>
-              </div>
+                <div className="flex gap-10 text-5xl lg:text-6xl font-medium  tracking-tight">
+                  <div className="flex flex-col items-center"><span>12</span><span className="text-[10px] -none opacity-30 tracking-normal tracking-normal mt-3">Hrs</span></div>
+                  <span className="opacity-20 translate-y-2">:</span>
+                  <div className="flex flex-col items-center"><span>45</span><span className="text-[10px] -none opacity-30 tracking-normal tracking-normal mt-3">Min</span></div>
+                  <span className="opacity-20 translate-y-2">:</span>
+                  <div className="flex flex-col items-center"><span>30</span><span className="text-[10px] -none opacity-30 tracking-normal tracking-normal mt-3">Sec</span></div>
+                </div>
+              </Card>
             </div>
           </div>
         </div>

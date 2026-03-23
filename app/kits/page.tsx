@@ -2,10 +2,10 @@ import ContentPage from "@/components/ContentPage";
 
 export default function Kits() {
   const items = [
-    { name: "Full Ritual Kit", category: "Set", price: "$120.00" },
-    { name: "Traveler Essentials", category: "Mini", price: "$55.00" },
-    { name: "Color Care Duet", category: "Treatment", price: "$75.00" },
-    { name: "Sculpting Trio", category: "Styling", price: "$95.00" },
+    { name: "Full Ritual Kit", category: "Set", price: "₹9,999" },
+    { name: "Traveler Essentials", category: "Mini", price: "₹4,565" },
+    { name: "Color Care Duet", category: "Treatment", price: "₹6,225" },
+    { name: "Sculpting Trio", category: "Styling", price: "₹7,885" },
   ];
 
   return (
